@@ -7,7 +7,7 @@ import com.bridgelabz.IPLanalyzer.model.BatsmanData;
 public class BatsmanSortingFunction implements Comparator<BatsmanData>{
 
 	public enum Order {
-		AVG, SR, BOUNDARIES
+		AVG, SR, BOUNDARIES, SR_BOUNDRIES
 	}
 
 	public Order sortOrder;
@@ -34,6 +34,14 @@ public class BatsmanSortingFunction implements Comparator<BatsmanData>{
 			if(o1.getNoOffours()+o1.getNoOfsixes()>o2.getNoOffours()+o1.getNoOfsixes()) return -1;
 			else if(o1.getNoOffours()+o1.getNoOfsixes()<o2.getNoOffours()+o1.getNoOfsixes()) return 1;
 			return 0;
+		}
+		case SR_BOUNDRIES:{
+			if(o1.getStrikeRate()==o2.getStrikeRate()) {
+				sortOrder=Order.BOUNDARIES;
+				return this.compare(o1, o2);
+			}
+			else if(o1.getStrikeRate()<o2.getStrikeRate()) return 1;
+			return -1;
 		}
 		}
 		return 0;
