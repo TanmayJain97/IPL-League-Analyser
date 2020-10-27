@@ -9,7 +9,7 @@ public class CricketerSortingFunction implements Comparator<CricketerData> {
 public Order sortOrder;
 	
 	public enum Order {
-		COMBINED_AVG
+		COMBINED_AVG, MAX_RUNS_WCKTS
 	}
 	
 	public CricketerSortingFunction(Order sortOrder) {
@@ -27,6 +27,15 @@ public Order sortOrder;
 				return 0;
 			}
 			else  if(o1.getBatsman().getAvg()<o2.getBatsman().getAvg()) return 1;
+			return -1;
+		}
+		case MAX_RUNS_WCKTS:{
+			if(o1.getBatsman().getRuns()==o2.getBatsman().getRuns()) {
+				if(o1.getBowler().getWickets()>o2.getBowler().getWickets()) return -1;
+				else if(o1.getBowler().getWickets()<o2.getBowler().getWickets()) return 1;
+				return 0;
+			}
+			else  if(o1.getBatsman().getRuns()<o2.getBatsman().getRuns()) return 1;
 			return -1;
 		}
 		}
