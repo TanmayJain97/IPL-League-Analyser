@@ -45,4 +45,12 @@ public class IPLAnalyzer {
 				.sorted(Comparator.comparingDouble(BatsmanData::getAvg).reversed())
 				.collect(Collectors.toList());
 	}
+	
+	public List<BatsmanData> sortBySR() throws CSVBuilderException{
+		if(battingList==null||battingList.size()==0)
+			throw new CSVBuilderException("No Census Data", ExceptionType.NO_DATA);
+		return battingList.stream()
+				.sorted(Comparator.comparingDouble(BatsmanData::getStrikeRate).reversed())
+				.collect(Collectors.toList());
+	}
 }
