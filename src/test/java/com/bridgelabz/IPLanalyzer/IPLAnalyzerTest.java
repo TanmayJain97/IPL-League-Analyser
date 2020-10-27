@@ -94,4 +94,18 @@ public class IPLAnalyzerTest {
 		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.AVG_SR).get(analyser.battingList.size()-1)).getPlayer();
 		assertEquals("Harpreet Brar", PName);
 	}
+
+	//Test for Sorted Total Runs,Avg
+
+	@Test
+	public void whenSorted_ShouldReturnMaxRuns_TopAvgOnTop() throws CSVBuilderException{
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.RUNS_AVG).get(0)).getPlayer();
+		assertEquals("David Warner", PName);
+	}
+
+	@Test
+	public void whenSorted_ShouldReturnMinRuns_BottomAvgOnBottom() throws CSVBuilderException{
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.RUNS_AVG).get(analyser.battingList.size()-1)).getPlayer();
+		assertEquals("Tim Southee", PName);
+	}
 }
