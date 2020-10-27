@@ -72,13 +72,13 @@ public class IPLBowlerAnalyzerTest {
 
 	@Test
 	public void whenSorted_ShouldReturnMaxSR_Max4w_5w_OnTop() throws CSVBuilderException{
-		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.SR_4w_5w).get(0)).getPlayer();
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.SR_4W_5W).get(0)).getPlayer();
 		assertEquals("Krishnappa Gowtham", PName);
 	}
 
 	@Test
 	public void whenSorted_ShouldReturnMinSR_Min4w_5w_OnBottom() throws CSVBuilderException{
-		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.SR_4w_5w).get(analyser.bowlingList.size()-1)).getPlayer();
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.SR_4W_5W).get(analyser.bowlingList.size()-1)).getPlayer();
 		assertEquals("Shivam Dube", PName);
 	}
 
@@ -86,13 +86,27 @@ public class IPLBowlerAnalyzerTest {
 
 	@Test
 	public void whenSorted_ShouldReturnMaxAvg_MaxSROnTop() throws CSVBuilderException{
-		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.Avg_SR).get(0)).getPlayer();
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.AVG_SR).get(0)).getPlayer();
 		assertEquals("Krishnappa Gowtham", PName);
 	}
 
 	@Test
 	public void whenSorted_ShouldReturnMinAvg_MinSROnBottom() throws CSVBuilderException{
-		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.Avg_SR).get(analyser.bowlingList.size()-1)).getPlayer();
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.AVG_SR).get(analyser.bowlingList.size()-1)).getPlayer();
 		assertEquals("Shivam Dube", PName);
+	}
+
+	//Test for Sorted Wickets Taken,Avg
+
+	@Test
+	public void whenSorted_ShouldReturnMaxWckts_BestAvgOnTop() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.WKTS_AVG).get(0)).getPlayer();
+		assertEquals("Krishnappa Gowtham", PName);
+	}
+
+	@Test
+	public void whenSorted_ShouldReturnnMinWckts_LeastAvgOnBottom() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.WKTS_AVG).get(analyser.bowlingList.size()-3)).getPlayer();
+		assertEquals("Liam Livingstone", PName);
 	}
 }
