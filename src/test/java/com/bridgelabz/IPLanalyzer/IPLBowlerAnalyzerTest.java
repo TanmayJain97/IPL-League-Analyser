@@ -11,7 +11,7 @@ import com.bridgelabz.censusAnalyzer.csvbuilder.exception.CSVBuilderException;
 public class IPLBowlerAnalyzerTest {
 
 	private final String BOWLER_CSV_PATH="./src/Resources/WP DP Data_02 IPL2019FactsheetMostWkts.csv";
-	
+
 	private IPLAnalyzer analyser;
 
 	@Before
@@ -36,6 +36,20 @@ public class IPLBowlerAnalyzerTest {
 
 	@Test
 	public void whenSorted_ShouldReturnCorrectAvgOnBottom() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.AVG).get(analyser.bowlingList.size()-3)).getPlayer();
+		assertEquals("Liam Livingstone", PName);
+	}
+
+	//Test for Sorted Avg
+
+	@Test
+	public void whenSorted_ShouldReturnCorrectSROnTop() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.AVG).get(0)).getPlayer();
+		assertEquals("Krishnappa Gowtham", PName);
+	}
+
+	@Test
+	public void whenSorted_ShouldReturnCorrectSROnBottom() throws CSVBuilderException{
 		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.AVG).get(analyser.bowlingList.size()-3)).getPlayer();
 		assertEquals("Liam Livingstone", PName);
 	}

@@ -9,7 +9,7 @@ public class BowlerSortingFunction implements Comparator<BowlerData> {
 	public Order sortOrder;
 	
 	public enum Order {
-		AVG
+		AVG, SR
 	}
 	
 	public BowlerSortingFunction(Order sortOrder) {
@@ -23,6 +23,11 @@ public class BowlerSortingFunction implements Comparator<BowlerData> {
 		case AVG:{
 			if(o1.getAvg()>o2.getAvg()) return -1;
 			else if(o1.getAvg()<o2.getAvg()) return 1;
+			return 0;
+		}
+		case SR:{
+			if(o1.getStrikeRate()>o2.getStrikeRate()) return -1;
+			else if(o1.getStrikeRate()<o2.getStrikeRate()) return 1;
 			return 0;
 		}
 		}
