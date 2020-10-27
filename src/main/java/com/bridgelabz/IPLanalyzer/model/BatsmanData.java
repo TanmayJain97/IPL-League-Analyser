@@ -13,7 +13,7 @@ public class BatsmanData {
 	@CsvBindByName(column = "Inns")
 	private int innings;
 	@CsvBindByName(column = "NO")
-	private int notOuts;
+	private int timesNotOut;
 	@CsvBindByName(column = "Runs")
 	private int runs;
 	@CsvBindByName(column = "HS")
@@ -47,8 +47,8 @@ public class BatsmanData {
 	public int getInnings() {
 		return innings;
 	}
-	public int getNotOuts() {
-		return notOuts;
+	public int getTimesNotOut() {
+		return timesNotOut;
 	}
 	public int getRuns() {
 		return runs;
