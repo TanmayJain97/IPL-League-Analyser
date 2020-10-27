@@ -1,4 +1,4 @@
 # IPL-League-Analyser
 Day 23 - Design Modelling Workshop
 
-Modified to UC 15 - Get max 100s scored and Best Batting Avg of the Cricketers from the csv File
+Modified to UC 16 - Get Best Batting Avg of the Cricketers who did not score a 100 or a 50 from the csv File
