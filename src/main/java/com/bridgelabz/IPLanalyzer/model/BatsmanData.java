@@ -5,52 +5,52 @@ import com.opencsv.bean.CsvBindByName;
 public class BatsmanData {
 	
 	@CsvBindByName(column = "POS")
-	private String pos;
+	private int pos;
 	@CsvBindByName(column = "PLAYER")
 	private String player;
 	@CsvBindByName(column = "Mat")
-	private String matches;
+	private int matches;
 	@CsvBindByName(column = "Inns")
-	private String innings;
+	private int innings;
 	@CsvBindByName(column = "NO")
-	private String notOuts;
+	private int notOuts;
 	@CsvBindByName(column = "Runs")
-	private String runs;
+	private int runs;
 	@CsvBindByName(column = "HS")
 	private String highScore;
 	@CsvBindByName(column = "Avg")
 	private String avg;
 	@CsvBindByName(column = "BF")
-	private String bf;
+	private int bf;
 	@CsvBindByName(column = "SR")
-	private String strikeRate;
+	private Double strikeRate;
 	@CsvBindByName(column = "100")
-	private String noOfhundreds;
+	private int noOfhundreds;
 	@CsvBindByName(column = "50")
-	private String noOffifties;
+	private int noOffifties;
 	@CsvBindByName(column = "4s")
-	private String noOffours;
+	private int noOffours;
 	@CsvBindByName(column = "6s")
-	private String noOfsixes;
+	private int noOfsixes;
 	
 	//Generating getters
 	
-	public String getPos() {
+	public int getPos() {
 		return pos;
 	}
 	public String getPlayer() {
 		return player;
 	}
-	public String getMatches() {
+	public int getMatches() {
 		return matches;
 	}
-	public String getInnings() {
+	public int getInnings() {
 		return innings;
 	}
-	public String getNotOuts() {
+	public int getNotOuts() {
 		return notOuts;
 	}
-	public String getRuns() {
+	public int getRuns() {
 		return runs;
 	}
 	public int getHighScore() {
@@ -69,46 +69,21 @@ public class BatsmanData {
 		}
 	}
 	public int getBf() {
-		try {
-			return Integer.parseInt(bf);
-		}catch(NumberFormatException ex){
-			return 0;
-		}
+		return bf;
 	}
 	public Double getStrikeRate() {
-		try {
-			return Double.parseDouble(strikeRate);
-		}catch(NumberFormatException ex){
-			return 0.00;
-		}
+		return strikeRate;
 	}
 	public int getNoOfhundreds() {
-		try {
-			return Integer.parseInt(noOfhundreds);
-		}catch(NumberFormatException ex){
-			return 0;
-		}
+		return noOfhundreds;
 	}
 	public int getNoOffifties() {
-		try {
-			return Integer.parseInt(noOffifties);
-		}catch(NumberFormatException ex){
-			return 0;
-		}
+		return noOffifties;
 	}
 	public int getNoOffours() {
-		try {
-			return Integer.parseInt(noOffours);
-		}catch(NumberFormatException ex){
-			return 0;
-		}
-		
+		return noOffours;
 	}
 	public int getNoOfsixes() {
-		try {
-			return Integer.parseInt(noOfsixes);
-		}catch(NumberFormatException ex){
-			return 0;
-		}
+		return noOfsixes;
 	}
 }
