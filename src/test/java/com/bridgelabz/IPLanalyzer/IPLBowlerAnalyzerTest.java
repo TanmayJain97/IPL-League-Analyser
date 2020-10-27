@@ -40,7 +40,7 @@ public class IPLBowlerAnalyzerTest {
 		assertEquals("Liam Livingstone", PName);
 	}
 
-	//Test for Sorted Avg
+	//Test for Sorted SR
 
 	@Test
 	public void whenSorted_ShouldReturnCorrectSROnTop() throws CSVBuilderException{
@@ -52,5 +52,19 @@ public class IPLBowlerAnalyzerTest {
 	public void whenSorted_ShouldReturnCorrectSROnBottom() throws CSVBuilderException{
 		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.AVG).get(analyser.bowlingList.size()-3)).getPlayer();
 		assertEquals("Liam Livingstone", PName);
+	}
+
+	//Test for Sorted Economy
+
+	@Test
+	public void whenSorted_ShouldReturnCorrectEconomyOnTop() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.ECON).get(0)).getPlayer();
+		assertEquals("Ben Cutting", PName);
+	}
+
+	@Test
+	public void whenSorted_ShouldReturnCorrectEconomyOnBottom() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.ECON).get(analyser.bowlingList.size()-3)).getPlayer();
+		assertEquals("Shivam Dube", PName);
 	}
 }
