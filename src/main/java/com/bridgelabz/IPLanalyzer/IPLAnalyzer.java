@@ -97,4 +97,21 @@ public class IPLAnalyzer {
 		Collections.sort(cricketerList,sort);
 		return cricketerList;
 	}
+	
+	public List<BatsmanData> getBatsmanSortedAndModifiedList() throws CSVBuilderException{
+		if(battingList==null||battingList.size()==0)
+			throw new CSVBuilderException("No Census Data", ExceptionType.NO_DATA);
+		BatsmanSortingFunction sort=new BatsmanSortingFunction(BatsmanSortingFunction.Order.AVG);
+		Collections.sort(battingList,sort);
+		
+		Iterator<BatsmanData> iterator = battingList.iterator();
+        while (iterator.hasNext()){
+        	BatsmanData batsman = iterator.next();
+            if(batsman.getNoOfhundreds()!=0 || batsman.getNoOffifties()!=0){   
+                iterator.remove();
+            }
+        }
+		
+		return battingList;
+	}
 }
