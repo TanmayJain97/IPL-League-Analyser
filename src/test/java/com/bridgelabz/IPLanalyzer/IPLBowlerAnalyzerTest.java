@@ -81,4 +81,18 @@ public class IPLBowlerAnalyzerTest {
 		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.SR_4w_5w).get(analyser.bowlingList.size()-1)).getPlayer();
 		assertEquals("Shivam Dube", PName);
 	}
+
+	//Test for Sorted Avg,SR
+
+	@Test
+	public void whenSorted_ShouldReturnMaxAvg_MaxSROnTop() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.Avg_SR).get(0)).getPlayer();
+		assertEquals("Krishnappa Gowtham", PName);
+	}
+
+	@Test
+	public void whenSorted_ShouldReturnMinAvg_MinSROnBottom() throws CSVBuilderException{
+		String PName=(analyser.getBowlerSortedList(BowlerSortingFunction.Order.Avg_SR).get(analyser.bowlingList.size()-1)).getPlayer();
+		assertEquals("Shivam Dube", PName);
+	}
 }
