@@ -66,4 +66,18 @@ public class IPLAnalyzerTest {
 		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.BOUNDARIES).get(analyser.battingList.size()-1)).getPlayer();
 		assertEquals("Tim Southee", PName);
 	}
+
+	//Test for Sorted SR,Boundries
+
+	@Test
+	public void whenSorted_ShouldReturnTopSR_MaxBoundriesOnTop() throws CSVBuilderException{
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.SR_BOUNDRIES).get(0)).getPlayer();
+		assertEquals("Ishant Sharma", PName);
+	}
+
+	@Test
+	public void whenSorted_ShouldReturnBottomSR_MinBoundriesOnBottom() throws CSVBuilderException{
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.SR_BOUNDRIES).get(analyser.battingList.size()-1)).getPlayer();
+		assertEquals("Bhuvneshwar Kumar", PName);
+	}
 }
