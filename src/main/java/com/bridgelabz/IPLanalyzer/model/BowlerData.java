@@ -23,7 +23,7 @@ public class BowlerData {
 	@CsvBindByName(column = "Avg")
 	private String avg;
 	@CsvBindByName(column = "Econ")
-	private Double econ;
+	private String econ;
 	@CsvBindByName(column = "SR")
 	private String strikeRate;
 	@CsvBindByName(column = "4w")
@@ -65,7 +65,11 @@ public class BowlerData {
 		}
 	}
 	public Double getEcon() {
-		return econ;
+		try {
+			return Double.parseDouble(econ);
+		}catch(NumberFormatException ex){
+			return 0.00;
+		}
 	}
 	public Double getStrikeRate() {
 		try {
