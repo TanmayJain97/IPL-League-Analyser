@@ -4,9 +4,9 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import com.bridgelabz.IPLanalyzer.model.BatsmanData;
+import com.bridgelabz.IPLanalyzer.sortingFunction.BatsmanSortingFunction;
 import com.bridgelabz.censusAnalyzer.csvbuilder.CSVBuilderFactory;
 import com.bridgelabz.censusAnalyzer.csvbuilder.ICSVBuilder;
 import com.bridgelabz.censusAnalyzer.csvbuilder.exception.CSVBuilderException;
@@ -38,19 +38,11 @@ public class IPLAnalyzer {
 		return list.size();
 	}
 	
-	public List<BatsmanData> sortByAvg() throws CSVBuilderException{
+	public List<BatsmanData> getSortedList(BatsmanSortingFunction.Order sortOrder) throws CSVBuilderException{
 		if(battingList==null||battingList.size()==0)
 			throw new CSVBuilderException("No Census Data", ExceptionType.NO_DATA);
-		return battingList.stream()
-				.sorted(Comparator.comparingDouble(BatsmanData::getAvg).reversed())
-				.collect(Collectors.toList());
-	}
-	
-	public List<BatsmanData> sortBySR() throws CSVBuilderException{
-		if(battingList==null||battingList.size()==0)
-			throw new CSVBuilderException("No Census Data", ExceptionType.NO_DATA);
-		return battingList.stream()
-				.sorted(Comparator.comparingDouble(BatsmanData::getStrikeRate).reversed())
-				.collect(Collectors.toList());
+		BatsmanSortingFunction sort=new BatsmanSortingFunction(sortOrder);
+		Collections.sort(battingList,sort);
+		return battingList;
 	}
 }

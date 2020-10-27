@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.bridgelabz.IPLanalyzer.sortingFunction.BatsmanSortingFunction;
 import com.bridgelabz.censusAnalyzer.csvbuilder.exception.CSVBuilderException;
 
 public class IPLAnalyzerTest {
@@ -13,13 +14,13 @@ public class IPLAnalyzerTest {
 	private IPLAnalyzer analyser;
 
 	@Before
-	public void init() {
+	public void init() throws CSVBuilderException {
 		analyser=new IPLAnalyzer();
+		analyser.readBatsmanData(BATSMAN_CSV_PATH);
 	}
 
 	@Test
-	public void givenBatsmanCSVFile_ShouldReturnCorrectCount() throws CSVBuilderException{
-		analyser.readBatsmanData(BATSMAN_CSV_PATH);
+	public void givenBatsmanCSVFile_ShouldReturnCorrectCount(){
 		int batsmanDataCount=analyser.getCount(analyser.battingList);
 		assertEquals(101, batsmanDataCount);
 	}
@@ -28,31 +29,41 @@ public class IPLAnalyzerTest {
 
 	@Test
 	public void whenSorted_ShouldReturnCorrectAvgOnTop() throws CSVBuilderException{
-		analyser.readBatsmanData(BATSMAN_CSV_PATH);
-		String topName=(analyser.sortByAvg().get(0)).getPlayer();
-		assertEquals("MS Dhoni", topName);
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.AVG).get(0)).getPlayer();
+		assertEquals("MS Dhoni", PName);
 	}
 
 	@Test
 	public void whenSorted_ShouldReturnCorrectAvgOnBottom() throws CSVBuilderException{
-		analyser.readBatsmanData(BATSMAN_CSV_PATH);
-		String topName=(analyser.sortByAvg().get(analyser.battingList.size()-1)).getPlayer();
-		assertEquals("Tim Southee", topName);
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.AVG).get(analyser.battingList.size()-1)).getPlayer();
+		assertEquals("Tim Southee", PName);
 	}
 
 	//Test for Sorted SR
 
 	@Test
 	public void whenSorted_ShouldReturnCorrectSROnTop() throws CSVBuilderException{
-		analyser.readBatsmanData(BATSMAN_CSV_PATH);
-		String topName=(analyser.sortBySR().get(0)).getPlayer();
-		assertEquals("Ishant Sharma", topName);
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.SR).get(0)).getPlayer();
+		assertEquals("Ishant Sharma", PName);
 	}
 
 	@Test
 	public void whenSorted_ShouldReturnCorrectSROnBottom() throws CSVBuilderException{
-		analyser.readBatsmanData(BATSMAN_CSV_PATH);
-		String topName=(analyser.sortBySR().get(analyser.battingList.size()-1)).getPlayer();
-		assertEquals("Bhuvneshwar Kumar", topName);
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.SR).get(analyser.battingList.size()-1)).getPlayer();
+		assertEquals("Bhuvneshwar Kumar", PName);
+	}
+
+	//Test for Sorted Boundries
+
+	@Test
+	public void whenSorted_ShouldReturnMaxBoundriesOnTop() throws CSVBuilderException{
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.BOUNDARIES).get(0)).getPlayer();
+		assertEquals("Shikhar Dhawan", PName);
+	}
+
+	@Test
+	public void whenSorted_ShouldReturnCorrectMinBoundriesOnBottom() throws CSVBuilderException{
+		String PName=(analyser.getSortedList(BatsmanSortingFunction.Order.BOUNDARIES).get(analyser.battingList.size()-1)).getPlayer();
+		assertEquals("Tim Southee", PName);
 	}
 }
