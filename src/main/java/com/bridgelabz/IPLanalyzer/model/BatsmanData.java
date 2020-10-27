@@ -53,8 +53,13 @@ public class BatsmanData {
 	public String getRuns() {
 		return runs;
 	}
-	public String getHighScore() {
-		return highScore;
+	public int getHighScore() {
+		if(highScore.contains("*")) highScore=highScore.replace("*", "");
+		try {
+			return Integer.parseInt(highScore);
+		}catch(NumberFormatException ex){
+			return 0;
+		}
 	}
 	public Double getAvg() {
 		try {
@@ -63,8 +68,12 @@ public class BatsmanData {
 			return 0.00;
 		}
 	}
-	public String getBf() {
-		return bf;
+	public int getBf() {
+		try {
+			return Integer.parseInt(bf);
+		}catch(NumberFormatException ex){
+			return 0;
+		}
 	}
 	public Double getStrikeRate() {
 		try {
@@ -73,16 +82,33 @@ public class BatsmanData {
 			return 0.00;
 		}
 	}
-	public String getNoOfhundreds() {
-		return noOfhundreds;
+	public int getNoOfhundreds() {
+		try {
+			return Integer.parseInt(noOfhundreds);
+		}catch(NumberFormatException ex){
+			return 0;
+		}
 	}
-	public String getNoOffifties() {
-		return noOffifties;
+	public int getNoOffifties() {
+		try {
+			return Integer.parseInt(noOffifties);
+		}catch(NumberFormatException ex){
+			return 0;
+		}
 	}
-	public String getNoOffours() {
-		return noOffours;
+	public int getNoOffours() {
+		try {
+			return Integer.parseInt(noOffours);
+		}catch(NumberFormatException ex){
+			return 0;
+		}
+		
 	}
-	public String getNoOfsixes() {
-		return noOfsixes;
+	public int getNoOfsixes() {
+		try {
+			return Integer.parseInt(noOfsixes);
+		}catch(NumberFormatException ex){
+			return 0;
+		}
 	}
 }
