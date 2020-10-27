@@ -66,8 +66,12 @@ public class BatsmanData {
 	public String getBf() {
 		return bf;
 	}
-	public String getStrikeRate() {
-		return strikeRate;
+	public Double getStrikeRate() {
+		try {
+			return Double.parseDouble(strikeRate);
+		}catch(NumberFormatException ex){
+			return 0.00;
+		}
 	}
 	public String getNoOfhundreds() {
 		return noOfhundreds;
